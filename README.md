@@ -1,43 +1,66 @@
-# 🔢 Number Guessing Game (Zahlen Ratespiel)
+💻 System Information Tool (System Info Skript)
+A Python script designed to retrieve and display detailed information about the host system's OS, CPU, RAM, and Disk Usage.
 
-A simple console-based number guessing game written in Python.
+Note: The script's console output (labels and descriptions) is intentionally displayed in German.
 
-**Please note: The game's interface and all prompts are entirely in German.**
+🛠️ Requirements
+This script relies on external Python packages (psutil and py-cpuinfo) for system access. You must install them using pip:
 
----
+Installation
+pip install psutil py-cpuinfo
 
-## 🌟 Features
+psutil: Used for cross-platform system monitoring (CPU counts, RAM, Disk usage).
 
-* **Simple Gameplay:** Try to guess a random number between 1 and 10.
-* **Immediate Feedback:** Get instant notification if your guess is correct or incorrect.
-* **Replay Option:** Easily choose to play again after an attempt.
-* **Colored Output:** Uses ANSI escape codes to highlight the correct number in blue after a failed attempt (visible in most modern terminals).
+py-cpuinfo (imported as cpuinfo): Used to gather detailed CPU model information.
 
----
+platform: (Standard library) Used for basic OS identification.
 
-## 🚀 Getting Started
+🚀 Getting Started
+Running the Script
+Save the code as a Python file (e.g., system_info.py).
 
-### Prerequisites
+Ensure all required dependencies are installed.
 
-You only need **Python 3** installed on your system. No external libraries are required as it only uses the built-in `random` module.
+Execute the script from your terminal:
 
-### Installation and Running
+python system_info.py
 
-1.  **Clone the repository** (or save the code above as a Python file, e.g., `guess_game.py`).
-2.  **Navigate to the directory** where you saved the file.
-3.  **Run the script** from your terminal:
+📊 Example Output
+The script provides an organized output structure with German labels:
 
-    ```bash
-    python guess_game.py
-    ```
+📦 System
+  OS: macOS 14.5 (arm64)
 
----
+🧠 CPU
+  Modell: Apple M3 Max
+  Kerne: 14
+  Threads: 14
 
-## 🎮 How to Play (in German)
+💾 RAM
+  Gesamt: 32.0 GB
+  Benutzt: 18.5 GB (57.8%)
+  Frei: 13.5 GB
 
-1.  The game will prompt you to guess a number: `Rate eine Zahl zwischen 1 und 10: ` (Guess a number between 1 and 10).
-2.  Enter your guess and press Enter.
-3.  **If correct:** You win! (`Richtig! 🎉`) and the game ends.
-4.  **If incorrect:** The correct number is revealed, and you are asked if you want to play again: `Erneut Versuchen? [y|n]: ` (Try again? [y|n]).
-    * Enter `y` to start a new round with a new random number.
-    * Enter `n` to quit the game (`Das Spiel wird beendet.`).
+🗄️ Festplatte (/)
+  Gesamt: 1000.0 GB
+  Benutzt: 450.0 GB (45.0%)
+  Frei: 550.0 GB
+
+⚙️ Functionality Details
+The script is structured around two main functions:
+
+getSystemInfo():
+
+Collects raw data from the imported libraries.
+
+Converts RAM and Disk statistics into Gigabytes (GB), rounding values to one decimal place.
+
+Includes special handling to rename the "darwin" OS kernel name to "macOS" for better readability.
+
+Returns all collected data as a Python dictionary.
+
+printSystemInfo(info):
+
+Takes the gathered data dictionary and formats it into the clean, emoji-enhanced, human-readable output you see above.
+
+Uses German labels (Gesamt, Benutzt, Frei, Kerne, etc.) for all printed statistics.
